@@ -27,13 +27,21 @@ export class HeroListComponent implements OnInit {
 
   ngOnInit() {
     // this.getHeroes();
+    // this.route.paramMap.pipe(
+    //   switchMap(params => {
+    //     this.selectedId = +params.get('id');
+    //     return this.heroService.getHeroes();
+    //   })
+    // ).subscribe(hero => {
+    //     this.heroes = hero;
+    // });
     this.route.paramMap.pipe(
       switchMap(params => {
         this.selectedId = +params.get('id');
         return this.heroService.getHeroes();
       })
     ).subscribe(hero => {
-        this.heroes = hero;
+      this.heroes$ = hero;
     })
   }
 
